@@ -1,0 +1,13 @@
+{
+  "name": "nebula-journal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "星轨纪 — 星空 / 奇幻 / 梦幻风格的极简静态博客，Markdown 驱动，零构建依赖",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["blog", "markdown", "github-pages", "starry-sky", "static-site"],
+  "license": "MIT"
+}

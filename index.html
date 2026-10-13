@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星轨纪 · Nebula Journal</title>
+<meta name="description" content="一个关于星空、代码与想象的梦幻个人博客">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%EE%95%9C%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/vendor/hljs-theme.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="nebula-layer" aria-hidden="true">
+  <span class="neb n1"></span>
+  <span class="neb n2"></span>
+  <span class="neb n3"></span>
+  <span class="neb n4"></span>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="30" height="30">
+          <defs>
+            <radialGradient id="bg1" cx="50%" cy="45%">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="45%" stop-color="#c4b5fd"/>
+              <stop offset="100%" stop-color="#6d28d9"/>
+            </radialGradient>
+          </defs>
+          <circle cx="20" cy="20" r="9" fill="url(#bg1)"/>
+          <ellipse cx="20" cy="20" rx="18" ry="5.5" fill="none" stroke="#a78bfa" stroke-width="1.6" opacity=".85" transform="rotate(-22 20 20)"/>
+          <circle cx="34" cy="12" r="1.6" fill="#f0abfc"/>
+          <circle cx="5" cy="27" r="1.2" fill="#7dd3fc"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>星轨纪</strong>
+        <em>Nebula Journal</em>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="打开导航菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav">
+      <a href="#/" data-route="home">星海</a>
+      <a href="#/tags" data-route="tags">星丛</a>
+      <a href="#/about" data-route="about">观测者</a>
+      <a class="gh-link" href="https://github.com/Ann13Wu" target="_blank" rel="noopener" title="GitHub">
+        <svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-2.91-.88-2.91-2.9 0-.61.22-1.13.58-1.53-.06-.15-.25-.75.05-1.56 0 0 .6-.19 1.98.73a6.9 6.9 0 0 1 1.8-.24c.61 0 1.23.08 1.8.24 1.37-.93 1.98-.73 1.98-.73.3.81.11 1.41.05 1.56.36.4.58.92.58 1.53 0 2.03-1.14 2.7-2.92 2.9.3.26.56.76.56 1.54 0 1.11-.01 2.02-.01 2.29 0 .21.15.46.55.38A7.99 7.99 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="app" class="wrap">
+  <div class="loading-sky"><span></span><span></span><span></span></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="foot-sig">✦ 在星尘沉降之处，记下一行字 ✦</p>
+    <p class="foot-meta">
+      <span id="footYear"></span> · 星轨纪 Nebula Journal ·
+      Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+      <span class="foot-sep">·</span><a class="foot-admin" href="#/admin" title="管理后台">✎ 管理</a>
+    </p>
+  </div>
+</footer>
+
+<button id="toTop" class="to-top" aria-label="回到顶部">↑</button>
+
+<script src="assets/vendor/marked.min.js"></script>
+<script src="assets/vendor/highlight.min.js"></script>
+<script src="assets/js/starfield.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/cms.js"></script>
+</body>
+</html>

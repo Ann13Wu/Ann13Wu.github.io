@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "the-night-of-perseids",
+    "title": "观测英仙座流星雨的那一夜",
+    "date": "2026-09-28",
+    "category": "天文",
+    "tags": [
+      "天文",
+      "观测",
+      "随笔",
+      "流星雨"
+    ],
+    "excerpt": "凌晨两点半，旷野，零度的风，和一小时内划过的四十七颗流星。这是我第一次真正理解「许愿」这件事为什么需要耐心。",
+    "cover": "",
+    "words": 691,
+    "readingTime": 2,
+    "draft": false,
+    "file": "posts/2026-09-28-the-night-of-perseids.md"
+  },
+  {
+    "slug": "build-a-starfield-with-canvas",
+    "title": "用 Canvas 造一片会呼吸的星空",
+    "date": "2026-09-15",
+    "category": "前端",
+    "tags": [
+      "前端",
+      "Canvas",
+      "CSS",
+      "动效"
+    ],
+    "excerpt": "从零实现一个不卡顿的星空背景：分层星点、闪烁相位、视差漂移，以及最重要的——如何在梦幻的背景下保证文字依然清晰可读。",
+    "cover": "",
+    "words": 708,
+    "readingTime": 2,
+    "draft": false,
+    "file": "posts/2026-09-15-build-a-starfield-with-canvas.md"
+  },
+  {
+    "slug": "ssrf-from-intranet-to-cloud-metadata",
+    "title": "SSRF：从内网探测到云元数据",
+    "date": "2026-08-30",
+    "category": "安全",
+    "tags": [
+      "CTF",
+      "Web安全",
+      "SSRF",
+      "云安全"
+    ],
+    "excerpt": "一次完整的 SSRF 利用链复盘：绕过本地回显限制、探测内网存活主机、最终打到云厂商的元数据服务拿下临时凭证。",
+    "cover": "",
+    "words": 710,
+    "readingTime": 2,
+    "draft": false,
+    "file": "posts/2026-08-30-ssrf-from-intranet-to-cloud-metadata.md"
+  },
+  {
+    "slug": "huffman-the-weight-of-words",
+    "title": "哈夫曼编码：让文字有重量",
+    "date": "2026-08-12",
+    "category": "算法",
+    "tags": [
+      "算法",
+      "数据结构",
+      "压缩",
+      "随笔"
+    ],
+    "excerpt": "一遍看懂哈夫曼树是怎么建起来的，以及那个反直觉的结论——出现次数最多的字符，未必拿到最短的编码。",
+    "cover": "",
+    "words": 739,
+    "readingTime": 2,
+    "draft": false,
+    "file": "posts/2026-08-12-huffman-the-weight-of-words.md"
+  }
+]
