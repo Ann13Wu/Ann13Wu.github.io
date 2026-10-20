@@ -178,6 +178,7 @@
         '<div class="cms-row">' +
           '<button class="cms-btn primary" id="cmsLogin">连接仓库</button>' +
         '</div>' +
+        '<p class="cms-tip">连接成功后，这里会出现「<b>＋ 新建文章</b>」按钮和文章列表。</p>' +
         '<p class="cms-tip">⚠️ Token 相当于你的仓库读写密码。<b>只在自己的电脑上使用</b>，不要在公用电脑上勾选记住。</p>' +
       '</div>');
 
@@ -269,8 +270,20 @@
         bindHeadActions();
       })
       .catch(function (err) {
-        app.innerHTML = shell('文章管理', '', '<div class="cms-panel"><div class="cms-empty">读取失败：' +
-          esc(err.message) + '</div></div>');
+        /* 读取失败也要保留「新建文章」入口 —— 列表读不出来不代表写不了 */
+        var tip = /401|403|Bad credentials/i.test(err.message)
+          ? 'Token 无效或权限不足（需要 classic 令牌并勾选 <b>repo</b>）。'
+          : 'posts/ 目录可能还不存在。';
+        app.innerHTML = shell('文章管理', '', '<div class="cms-panel">' +
+          '<div class="cms-toolbar">' +
+            '<button class="cms-btn primary" id="cmsNew">＋ 新建文章</button>' +
+            '<span class="cms-count">列表读取失败</span>' +
+          '</div>' +
+          '<div class="cms-empty">读取 posts/ 失败：' + esc(err.message) +
+          '<br>' + tip + '<br>直接点「新建文章」仍可尝试写入，保存时若报同样的错再回来换 Token。</div>' +
+          '</div>');
+        var nb = document.getElementById('cmsNew');
+        if (nb) nb.addEventListener('click', function () { viewEditor(null); });
         bindHeadActions();
       });
   }

@@ -82,7 +82,20 @@ git push -u origin main
 
 > 以后每次 `git push`，Actions 会自动 `node build.js` 并重新部署。**你甚至可以在 GitHub 网页上直接新建 `.md` 文件写文章**，push 后 Actions 会帮你生成索引。
 
-### 方法二：部署到普通仓库（项目页）
+### 方法二：一键脚本（打不开 GitHub 网页时最省事）
+
+1. 生成一个 **classic** Token（勾 `repo`），把它粘到项目根目录的 **`.token`** 文件里
+2. 执行：
+
+```bash
+node setup-github.js
+```
+
+脚本会自动完成：校验 Token → 创建 `用户名.github.io` 仓库 → 开启 Actions → 推送代码 → 开启 Pages。
+推送时会自动清空 git 代理（某些本机代理会拦掉 github.com），推完自动把 remote 地址里的 Token 去掉。
+用完记得删掉 `.token`。
+
+### 方法三：部署到普通仓库（项目页）
 
 如果仓库名不是 `用户名.github.io`，访问地址会是 `https://用户名.github.io/仓库名/`。本项目全部使用相对路径和 hash 路由，**这种情况也能正常工作**，无需改配置。
 

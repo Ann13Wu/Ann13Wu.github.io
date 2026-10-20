@@ -4,3 +4,10 @@ npm-debug.log*
 Thumbs.db
 *.log
 .env
+.token
+.token.txt
+.token.gitee
+*.token
+.edge-auth-profile/
+.edge-auth2/
+.devicecode
