@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 陪玩三角色 · 资源自检页</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; padding: 24px;
+        background: #16161e; color: #e8e8f0;
+        font: 14px/1.6 system-ui, "Microsoft YaHei", sans-serif;
+      }
+      h1 { font-size: 18px; margin: 0 0 4px; }
+      .hint { color: #8a8a9c; font-size: 12px; margin-bottom: 20px; }
+      table { border-collapse: collapse; width: 100%; max-width: 900px; }
+      th, td { border: 1px solid #2a2a36; padding: 10px; text-align: left; vertical-align: middle; }
+      th { background: #1d1d26; font-weight: 600; font-size: 12px; color: #b8b8c8; }
+      td img, td .fallback {
+        width: 88px; height: 88px; object-fit: contain;
+        display: block; background: #1d1d26; border-radius: 8px;
+      }
+      .fallback { display: flex; align-items: center; justify-content: center; font-size: 40px; }
+      .ok { color: #7fd48b; }
+      .bad { color: #ff8a8a; }
+      .meta { color: #8a8a9c; font-size: 12px; }
+      code { background: #23232e; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+      .row-title { font-weight: 600; }
+      .row-title small { font-weight: 400; color: #8a8a9c; }
+    </style>
+  </head>
+  <body>
+    <h1>AI 陪玩三角色 · 资源自检页</h1>
+    <div class="hint">
+      换图后刷新本页即可自检。路径约定：<code>assets/char/{id}_{avatar|sticker|full}.png</code>，
+      id = fei / nai / gan。缺图自动降级为 emoji 占位（不报错、不阻塞）。
+    </div>
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th style="width: 190px">角色</th>
+          <th>avatar（头像）</th>
+          <th>sticker（逃跑表情）</th>
+          <th>full（结算立绘）</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script type="module">
+      const CHARS = [
+        { id: 'fei', name: '肥嘟嘟', emoji: '🦘', identity: '校园外卖骑手' },
+        { id: 'nai', name: '奶嘟嘟', emoji: '🐉', identity: '隔壁学弟，奶龙的跟屁虫' },
+        { id: 'gan', name: '干巴巴', emoji: '🥢', identity: '助教 / 学霸学长' },
+      ]
+      const KINDS = ['avatar', 'sticker', 'full']
+
+      const tb = document.querySelector('#tbl tbody')
+
+      function load(src) {
+        return new Promise((resolve) => {
+          const img = new Image()
+          img.onload = () => resolve(img)
+          img.onerror = () => resolve(null)
+          img.src = src
+          setTimeout(() => resolve(null), 5000)
+        })
+      }
+
+      for (const c of CHARS) {
+        const tr = document.createElement('tr')
+        const td0 = document.createElement('td')
+        td0.innerHTML = `<div class="row-title">${c.name} <small>${c.id}</small></div>
+          <div class="meta">${c.identity}</div>`
+        tr.appendChild(td0)
+
+        for (const k of KINDS) {
+          const td = document.createElement('td')
+          const img = await load(`assets/char/${c.id}_${k}.png`)
+          if (img) {
+            img.src = `assets/char/${c.id}_${k}.png`
+            td.appendChild(img)
+            td.insertAdjacentHTML(
+              'beforeend',
+              `<div class="meta ok">✓ ${img.naturalWidth}×${img.naturalHeight}</div>`,
+            )
+          } else {
+            const div = document.createElement('div')
+            div.className = 'fallback'
+            div.textContent = c.emoji
+            td.appendChild(div)
+            td.insertAdjacentHTML(
+              'beforeend',
+              '<div class="meta bad">缺图 → emoji 降级</div>',
+            )
+          }
+          tr.appendChild(td)
+        }
+        tb.appendChild(tr)
+      }
+    </script>
+  </body>
+</html>

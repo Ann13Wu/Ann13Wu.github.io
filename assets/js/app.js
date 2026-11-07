@@ -84,6 +84,19 @@
       '</div>' +
     '</section>';
 
+    /* 置顶互动入口：《一日之计》发布在本站 /yiri-zhiji/，只在首页首屏出现 */
+    if (!state.q && !state.tag && state.page === 1) {
+      h += '<a class="game-feature" href="/yiri-zhiji/">' +
+        '<span class="gf-glow" aria-hidden="true"></span>' +
+        '<span class="gf-main">' +
+          '<span class="gf-badge">✦ NEW · 点开就能玩</span>' +
+          '<span class="gf-title">《一日之计》</span>' +
+          '<span class="gf-sub">奶蛙在奶龙工学院的一天 · 分配属性、抽主角、躲摄像头、扫脸、校园跑</span>' +
+        '</span>' +
+        '<span class="gf-go">开始试玩 <b>→</b></span>' +
+      '</a>';
+    }
+
     /* 搜索 */
     h += '<div class="search-bar">' +
       '<span class="icon">✦</span>' +
